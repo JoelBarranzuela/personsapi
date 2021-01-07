@@ -7,20 +7,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "persona_response")
-@Data
+@Table(name = "person_response")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ApiModel("respuesta persona")
 public class PersonResponse {
   
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @ApiModelProperty(example = "1", position = 1)
   private Long id;
+  
   @Column(name = "document_number")
-  private int documentNumber;
+  @ApiModelProperty(example = "10000000", position = 2)
+  private String documentNumber;
   @Column(name = "finger_print")
+  @ApiModelProperty(example = "true", position = 3)
   private boolean fingerprint;
   @Column(name = "black_list")
+  @ApiModelProperty(example = "false", position = 4)
   private boolean blacklist;
 }
